@@ -6,6 +6,7 @@ body {
 	font-family: Amazon Ember, Arial, San-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background: rgb(234, 237, 237);
 }
 
 code {

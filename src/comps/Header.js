@@ -5,10 +5,17 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Header.css';
+import { Link } from 'react-router-dom';
+import { useStateValue } from '../config/StateProvider';
 function Header() {
+	const [{ cart }, dispatch] = useStateValue();
+	const items_cart = cart?.length;
+
 	return (
 		<div className="header">
-			<img className="header_logo" src={logo} alt="logo" />
+			<Link to="/" className="header_logo">
+				<img className="header_logo" src={logo} alt="logo" />
+			</Link>
 			<div className="locationLogo">
 				<LocationOnIcon className="locationping" />
 				<span className="deliveryCountry">
@@ -45,12 +52,14 @@ function Header() {
 					<span className="_headerOptionLine1">Your</span>
 					<span className="_headerOptionLine2">Prime</span>
 				</div>
-				<div className="_headerCartOption">
-					<span className="_headerOptionLine2 _headerCartOption _cartCount">
-						0
-					</span>
-					<ShoppingCartIcon />
-				</div>
+				<Link to="/CheckOut">
+					<div className="_headerCartOption">
+						<span className="_headerOptionLine2 _headerCartOption _cartCount">
+							{items_cart}
+						</span>
+						<ShoppingCartIcon />
+					</div>
+				</Link>
 			</div>
 		</div>
 	);

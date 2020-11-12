@@ -8,11 +8,13 @@
 	top: 0;
 	color: white !important;
 }
+
 .header_logo {
 	width: 100px;
 	object-fit: contain;
-	text-align: center !important;
 	margin: 0px 20px;
+	display: flex;
+	text-align: center;
 	cursor: pointer;
 }
 
@@ -148,7 +150,7 @@
 	position: sticky;
 	height: 45px;
 	background-color: #232f3e;
-	z-index: 100;
+	z-index: 99;
 	color: white !important;
 
 	top: 0;

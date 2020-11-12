@@ -11,22 +11,22 @@ function SubHeader() {
 					<span>All</span>
 				</div>
 				<div className="_subHeaderOptions">
-					<Button class="_subHeaderlink" href="#text-buttons">
+					<Button className="_subHeaderlink" href="#text-buttons">
 						Today's Deals
 					</Button>
 
-					<Button class="_subHeaderlink" href="#text-buttons">
+					<Button className="_subHeaderlink" href="#text-buttons">
 						Customer Service
 					</Button>
 
-					<Button class="_subHeaderlink" href="#text-buttons">
+					<Button className="_subHeaderlink" href="#text-buttons">
 						Gift Card
 					</Button>
 
-					<Button class="_subHeaderlink" href="#text-buttons">
+					<Button className="_subHeaderlink" href="#text-buttons">
 						Sell
 					</Button>
-					<Button class="_subHeaderlink" href="#text-buttons">
+					<Button className="_subHeaderlink" href="#text-buttons">
 						Registry
 					</Button>
 				</div>
