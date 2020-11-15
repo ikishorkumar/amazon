@@ -8,6 +8,12 @@ import CheckOut from './comps/CheckOut';
 import LoginPage from './comps/LoginPage';
 import { auth } from './config/Firebase';
 import { useStateValue } from './config/StateProvider';
+import Payment from './comps/Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+const promise = loadStripe(
+	'pk_test_51HnoNDKEL92aCuxLtnC8hgrUF7B4vx3uVUIxcbVLhfscEspn0q86F3FgxltK7Z3a7lXbp9TlNndqPEjW00K1h6lz00RUrzHDqn'
+);
 function App() {
 	const [{}, dispatch] = useStateValue();
 	useEffect(() => {
@@ -40,6 +46,13 @@ function App() {
 						<Header />
 						<SubHeader />
 						<CheckOut />
+					</Route>
+					<Route path="/Payment">
+						<Header />
+						<SubHeader />
+						<Elements stripe={promise}>
+							<Payment />
+						</Elements>
 					</Route>
 					<Route path="/">
 						<Header />

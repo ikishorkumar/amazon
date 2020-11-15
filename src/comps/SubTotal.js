@@ -6,7 +6,9 @@ import React, { useState } from 'react';
 import './SubTotal.css';
 import { useStateValue } from '../config/StateProvider';
 import { getTotalCart } from '../config/reducer';
+import { useHistory } from 'react-router-dom';
 function SubTotal() {
+	const history = useHistory();
 	const [{ cart }, dispatch] = useStateValue();
 	const items_cart = cart?.length;
 	const [count, setCount] = useState(0);
@@ -23,7 +25,9 @@ function SubTotal() {
 							<Checkbox aria-label="checkbox" color="primrary" />
 							<label> This order contains a gift</label>
 						</small>
-						<Button>Procced to checkout</Button>
+						<Button onClick={(e) => history.push('/Payment')}>
+							Procced to checkout
+						</Button>
 					</>
 				)}
 				decimalScale={2}
@@ -33,19 +37,6 @@ function SubTotal() {
 				thousandSeprator={true}
 				prefix={'$'}
 			/>
-			{/* <div className="_subTotalTitle">
-				<h2>Subtotal (2 items):</h2>
-				<p>
-					<strong>$19.48</strong>
-				</p>
-				<Checkbox
-					aria-label="primrary checkbox"
-					varient="primrary"
-					color="primrary"
-				/>
-				<label> This order contains a gift</label>
-				<Button>Procced to checkout</Button>
-			</div> */}
 		</div>
 	);
 }
