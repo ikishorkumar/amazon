@@ -9,7 +9,7 @@ import { getTotalCart } from '../config/reducer';
 import CheckOutProduct from './CheckOutProduct';
 
 function CheckOut() {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{ cart, user }, dispatch] = useStateValue();
 	const items_cart = cart?.length;
 	const [count, setCount] = useState(0);
 
@@ -23,7 +23,7 @@ function CheckOut() {
 				/>
 				<div className="_ShoppingCart">
 					<div className="_ShoppingCartTitle">
-						<h1>Shopping Cart</h1>
+						<h1>Shopping Cart : {user?.email}</h1>
 						<p>Price</p>
 					</div>
 

@@ -7,9 +7,15 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../config/StateProvider';
+import { auth } from '../config/Firebase';
 function Header() {
-	const [{ cart }, dispatch] = useStateValue();
+	const [{ cart, user }, dispatch] = useStateValue();
 	const items_cart = cart?.length;
+	const handleAuthentication = () => {
+		if (user) {
+			auth.signOut();
+		}
+	};
 
 	return (
 		<div className="header">
@@ -39,10 +45,15 @@ function Header() {
 					<span className="_headerOptionLine1"> Flag</span>
 					<span className="_headerOptionLine2"> PAK</span>
 				</div>
-				<div className="_headerOptions">
-					<span className="_headerOptionLine1">Hello, Sign In</span>
-					<span className="_headerOptionLine2">Accounts & Lists</span>
-				</div>
+				<Link to={!user && '/LoginPage'} className="link">
+					<div className="_headerOptions" onClick={handleAuthentication}>
+						<span className="_headerOptionLine1">
+							{user ? user.email : ' 	Hello, Guest '},
+							{user ? 'Sign Out' : 'Sign In'}
+						</span>
+						<span className="_headerOptionLine2">Accounts & Lists</span>
+					</div>
+				</Link>
 				<div className="_headerOptions">
 					<span className="_headerOptionLine1">Returns</span>
 					<span className="_headerOptionLine2">& Orders</span>

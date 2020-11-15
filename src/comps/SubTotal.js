@@ -20,11 +20,7 @@ function SubTotal() {
 						</p>
 
 						<small className="_subTotalGift">
-							<Checkbox
-								aria-label="primrary checkbox"
-								varient="primrary"
-								color="primrary"
-							/>
+							<Checkbox aria-label="checkbox" color="primrary" />
 							<label> This order contains a gift</label>
 						</small>
 						<Button>Procced to checkout</Button>
