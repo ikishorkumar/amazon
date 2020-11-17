@@ -10,6 +10,7 @@ const firebaseConfig = {
 	messagingSenderId: '1034367947773',
 	appId: '1:103f849ad663b3f83f94',
 	measurementId: 'G-X2ZP',
+// 	I have edited thse so you might lookout for your own config details of firebase
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
