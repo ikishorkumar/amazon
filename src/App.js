@@ -3,7 +3,8 @@ import './App.css';
 import Header from './comps/Header';
 import SubHeader from './comps/SubHeader';
 import Home from './comps/Home';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Orders from './comps/Orders';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CheckOut from './comps/CheckOut';
 import LoginPage from './comps/LoginPage';
 import { auth } from './config/Firebase';
@@ -41,6 +42,11 @@ function App() {
 				<Switch>
 					<Route path="/LoginPage">
 						<LoginPage />
+					</Route>
+					<Route path="/Orders">
+						<Header />
+						<SubHeader />
+						<Orders />
 					</Route>
 					<Route path="/CheckOut">
 						<Header />

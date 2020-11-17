@@ -3,11 +3,11 @@ import { useStateValue } from '../config/StateProvider';
 import CheckOutProduct from './CheckOutProduct';
 import { Link, useHistory } from 'react-router-dom';
 import CurrencyFormat from 'react-currency-format';
-
 import './Payment.css';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { getTotalCart } from '../config/reducer';
 import axios from '../config/axios';
+import { db } from '../config/Firebase';
 function Payment() {
 	const [{ cart, user }, dispatch] = useStateValue();
 
@@ -29,6 +29,7 @@ function Payment() {
 				// Stripe axcepts the total in currencies sub units (currency sub units)
 				url: `/payments/create?total=${getTotalCart(cart) * 100}`,
 			});
+			// console.log('the responce is >', response);
 			setClientSecret(response.data.clientSecret);
 		};
 
@@ -50,10 +51,23 @@ function Payment() {
 			})
 			.then(({ paymentIntent }) => {
 				// paymentInent = payemnt confirmation
+				db.collection('users')
+					.doc(user?.uid)
+					.collection('orders')
+					.doc(paymentIntent.id)
+					.set({
+						cart: cart,
+						amount: paymentIntent.amount,
+						created: paymentIntent.created,
+					});
+
 				setSucceeded(true);
 				setError(null);
 				setProcessing(false);
-				history.replace('/orders'); // history is not used becuse we don''t want to come back to process page
+				dispatch({
+					type: 'EMPTY_CART',
+				});
+				history.replace('/Orders'); // history is not used becuse we don''t want to come back to process page
 			});
 	};
 	const handleChange = (event) => {

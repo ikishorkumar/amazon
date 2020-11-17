@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CheckOut.css';
 import { Button } from '@material-ui/core';
 // import LabelImportantIcon from '@material-ui/icons/LabelImportant';
@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core';
 import { useStateValue } from '../config/StateProvider';
 // import { getTotalCart } from '../config/reducer';
 
-function CheckOutProduct({ id, title, image, rating, price }) {
+function CheckOutProduct({ id, title, image, rating, price, hideBtn }) {
 	const [{ cart }, dispatch] = useStateValue();
 	// console.log('this is the cart', cart);
 	const removefromCart = () => {
@@ -15,7 +15,6 @@ function CheckOutProduct({ id, title, image, rating, price }) {
 
 		dispatch({
 			type: removefromCart,
-
 			id: id,
 		});
 	};
@@ -34,7 +33,7 @@ function CheckOutProduct({ id, title, image, rating, price }) {
 							<p>⭐</p>
 						))}
 				</div>
-				<Button onClick={removefromCart}>Remove from Cart</Button>
+				{!hideBtn && <Button onClick={removefromCart}>Remove from Cart</Button>}
 			</div>
 			<h1 className="_productchekoutPrice">
 				<strong>$</strong>

@@ -31,3 +31,22 @@
 ._Payment_Details {
 	flex: 0.8;
 }
+._Payment_Details > form {
+	max-width: 400px;
+}
+._Payment_Details > form > div > h3 {
+	padding: 20px 0 10px 0 !important;
+}
+
+._Payment_Details > form > div > button {
+	background: #f0c14b;
+	border: 1px solid;
+	margin-top: 10px;
+	border-color: #a88734 #9c7e31 #846a29;
+	color: #111;
+	height: 30px;
+	width: 100%;
+}
+._Payment_Details > form > div > button:hover {
+	background: #f0c14b;
+}

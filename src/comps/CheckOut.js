@@ -1,8 +1,8 @@
-import { Button } from '@material-ui/core';
-import React, { useState } from 'react';
+// import { Button } from '@material-ui/core';
+import React from 'react';
 import './CheckOut.css';
-import LabelImportantIcon from '@material-ui/icons/LabelImportant';
-import LabelIcon from '@material-ui/icons/Label';
+// import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+// import LabelIcon from '@material-ui/icons/Label';
 import SubTotal from './SubTotal';
 import { useStateValue } from '../config/StateProvider';
 import { getTotalCart } from '../config/reducer';
@@ -11,7 +11,6 @@ import CheckOutProduct from './CheckOutProduct';
 function CheckOut() {
 	const [{ cart, user }, dispatch] = useStateValue();
 	const items_cart = cart?.length;
-	const [count, setCount] = useState(0);
 
 	return (
 		<div className="_checkOut">
@@ -27,7 +26,7 @@ function CheckOut() {
 						<p>Price</p>
 					</div>
 
-					{cart.map((item) => {
+					{cart.map((item, i) => {
 						return (
 							<CheckOutProduct
 								id={item.id}
